@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Login</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            background-color: #ffffff3b;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h3 {
+            color: #1F0FFF; 
+            margin-bottom: 0px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        b {
+            color: tomato;
+        }
+
+        a {
+            color: tomato;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .box {
+            width: 400px; 
+            height: 100px; 
+            background-color: #055bb5;
+            background-position: center;
+            background-size: contain;
+            border: 2px solid #055bb5; 
+            margin: 0px; 
+            border-radius: 10px 10px 0 0;
+            transition: background-color 0.3s; 
+            cursor: pointer;
+        }
+
+        .resizeit {
+            margin-top: 3px;
+            max-width: 150px;
+            max-height: 150px;
+        }
+
+        .box:hover {
+            background-color: #0C08AE; 
+        }
+
+        .panel {
+            margin-top: 0px; 
+            border: 2px solid #3498db; 
+            width: 400px;
+          
+            height: 400px; 
+            background-color: #fff; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+           
+            border-radius: 0 0 10px 10px; 
+        }
+
+        .pannel-content {
+            font-size: 16px; 
+            line-height: 1.6; 
+        }
+
+        
+        .pannel-heading {
+            font-size: 24px; 
+            margin-bottom: 10px; 
+            color: #333; 
+        }
+
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 200px;
+            height: 20px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #0C08AE; 
+            outline: none;
+        }
+
+        
+        .submit {
+            width: 180px;
+            background-color: #44ac33;
+            color: #fff;
+            padding: 15px 30px; 
+            border: none;
+            border-radius: 25px; 
+            font-size: 20px; 
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
+        }
+
+        .submit:hover {
+            background-color: #09347a;
+            transform: scale(1.05); 
+        }
+
+        .submit:focus {
+            outline: none; 
+            box-shadow: 0 0 5px rgba(9, 165, 66, 0.3);
+        }
+
+        footer {
+            color: #1F0FFF;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="center" style="margin-top: 100px;">
+        <div class="content">
+            <h3>You are already connected to NIT internal network. Now if you want to connect with the internet, you need to re-enter your username and password to access the internet.</h3>
+            <h3>If you do not want to access the internet, you don't need to log in here and can minimize the login window.</h3>
+            <h3>If you want to connect to the internet later, you can open the minimized page and provide your username and password. If you closed the window by mistake, then you will need to open your browser and type <b>http://192.168.10.17:8090</b> and provide your username and password.</h3>
+            <h3><b>NOTE:</b> If you don't want to use the internet, log out from the same login page. Don't close the login page directly.</h3>
+        </div>
+    </div>
+    <div class="center">
+        <div class="content">
+            <div class="box">
+                <img src="Nitp Logo.jpeg" alt="Nitp Logo" class="resizeit">
+            </div>
+            <div class="panel">
+                <h1 style="color: #1F0FFF;">Sign in to access this network</h1>
+                <form action="process_login.php" method="POST">
+                    <input type="text" id="username" name="username" required placeholder="Username"><br><br>
+                    <input type="password" id="password" name="password" required placeholder="Password"><br><br>
+                    <button type="submit" class="submit">Sign-In</button>
+                </form>
+            </div>
+            <script>
+               
+                document.getElementById('loginButton').addEventListener('click', function() {
+                   
+                    var username = document.getElementById('username').value;
+                    var password = document.getElementById('password').value;
+        
+             
+                    if (username.trim() === '' || password.trim() === '') {
+                        alert('Please enter both username and password.');
+                        return;
+                    }
+        
+                   
+        
+                   
+                    document.getElementById('loginForm').submit();
+                });
+            </script>
+            <div class="content">
+                <a href="click.html" style="color: #0C08AE;">CLICK HERE TO SEE YOUR PROFILE DETAILS</a>
+            </div>
+            
+        </div>
+    </div>
+    <footer>
+        <h1>Click To Create Guest Users (Only for Selected Users)</h1>
+        <p>Courtesy: IT Services, NIT Patna (In case you forget your password, please contact PI-IT Services)</p>
+    </footer>
+</body>
+</html>
+
+
