@@ -111,6 +111,24 @@
             border-color: #0C08AE; 
             outline: none;
         }
+        /* Your existing CSS for the input field */
+input[type="password"].vibrate {
+    animation: vibrate 0.3s ease infinite;
+}
+
+@keyframes vibrate {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+/* CSS for the password input field with vibration effect */
+input[type="text"].vibrate {
+    animation: vibrate 0.3s ease infinite;
+}
+
 
         
         .submit {
@@ -162,28 +180,41 @@
                 <form action="process_login.php" method="POST">
                     <input type="text" id="username" name="username" required placeholder="Username"><br><br>
                     <input type="password" id="password" name="password" required placeholder="Password"><br><br>
-                    <button type="submit" class="submit">Sign-In</button>
+                    <button type="submit" class="submit" id = "loginButton">Sign-In</button>
                 </form>
             </div>
             <script>
-               
-                document.getElementById('loginButton').addEventListener('click', function() {
-                   
+                document.getElementById('loginButton').addEventListener('click', function(event) {
+                    
+                    event.preventDefault();
+            
                     var username = document.getElementById('username').value;
                     var password = document.getElementById('password').value;
-        
-             
+            
+                    var correctPassword = '12345678'; 
+            
                     if (username.trim() === '' || password.trim() === '') {
                         alert('Please enter both username and password.');
                         return;
                     }
-        
-                   
-        
-                   
-                    document.getElementById('loginForm').submit();
+            
+                    if (password !== correctPassword) {
+                       
+                        document.getElementById('username').classList.add('vibrate');
+                        document.getElementById('password').classList.add('vibrate');
+             alert('Incorrect password.');
+                        
+                        setTimeout(function() {
+                            document.getElementById('password').classList.remove('vibrate');
+                            document.getElementById('username').classList.remove('vibrate');
+                        }, 300);
+                    } else {
+                       
+                        alert('Login successful!');
+                    }
                 });
             </script>
+            
             <div class="content">
                 <a href="click.html" style="color: #0C08AE;">CLICK HERE TO SEE YOUR PROFILE DETAILS</a>
             </div>
